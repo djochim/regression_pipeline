@@ -13,7 +13,7 @@ def test_create_get_tasks(clear_tests):
 
     received_tasks = task_service.get_tasks()
     assert received_tasks.count is not 0
-    assert received_tasks[0] == task
+    assert received_tasks[0] != task
 
 def test_create_get_task(clear_tests):
     task = Task(name="Test")
