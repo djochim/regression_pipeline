@@ -26,3 +26,12 @@ def test_post_tasks():
     assert json_body['name'] == "Finish presentation"
     assert json_body['id'] == created_task_id
     assert json_body['isFinished'] is False
+
+def test_delete_tasks():
+    response = client.delete("/tasks")
+    assert response.status_code == 200
+
+def test_read_tasks_after_delete():
+    response = client.get("/tasks")
+    assert response.status_code == 200
+    assert response.json() == []

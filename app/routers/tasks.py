@@ -10,6 +10,10 @@ router = APIRouter()
 def get_tasks():
     return task_service.get_tasks()
 
+@router.delete("/tasks")
+def get_tasks():
+    return task_service.delete_tasks()
+
 @router.post("/tasks")
 def create_tasks(task: schemas.Task):
     task_service.create_task(task)
