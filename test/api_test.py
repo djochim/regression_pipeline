@@ -15,7 +15,7 @@ def test_post_tasks():
     )
     assert response.status_code == 200
     json_body = response.json()
-    assert json_body['name'] == "Finish presentation"
+    assert json_body['name'] == "Wrong Name"
     assert json_body['id'] is not None
     assert json_body['isFinished'] is False
     created_task_id = json_body['id']
