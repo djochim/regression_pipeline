@@ -1,0 +1,33 @@
+@startuml "Regression pipeline flow"
+
+State "Open branch" as bc
+State "Puch change" as cp
+State "Push new tests" as tp
+State "Open pull request" as pro
+State "Pipeline runs" as pr
+State "Succesful pipeline" as sp
+State "Failing pipeline" as fp
+State "Merge pull request" as mpr
+State fork_change <<fork>>
+State join_change <<join>>
+State choice_change <<choice>>
+State choice_pipeline <<choice>>
+
+[*] --> bc
+bc --> fork_change
+fork_change --> cp
+fork_change --> tp
+cp --> join_change
+tp --> join_change
+join_change --> choice_change
+choice_change --> pro : [PR_missing]
+choice_change --> pr : [PR_exist]
+pro --> pr
+pr --> choice_pipeline
+choice_pipeline --> sp : [pipeline_OK]
+choice_pipeline --> fp : [pipeline_FAILED]
+fp --> fork_change : Fix change
+sp --> mpr
+mpr --> [*]
+
+@enduml
