@@ -13,9 +13,12 @@ After a successful pipeline run, the developer can merge the small change into t
 
 ![](plantuml/RegressionPipelineFlow.png)
 
-## Available tests
+## Available tests/pipeline steps
 ### Unit tests
 
 ### API tests
 
 ### Test coverage
+
+### Static code scans
+With static code scan plugins like [prospector](https://github.com/PyCQA/prospector) which is used in this pipeline, common errors can be prevented and the quality of the code increases because of specified rules which are checked automatically. In addition, static security scans like [bandit](https://github.com/PyCQA/bandit) can spot potential security issues in the code and those could be fixed directly.
