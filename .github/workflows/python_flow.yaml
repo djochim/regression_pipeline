@@ -1,8 +1,10 @@
 name: Fast api test
 on: 
   pull_request:
+  push:
     branches:
-      - main
+      - 'main'
+
 jobs:
   test_pipeline:
     runs-on: ubuntu-latest
@@ -30,6 +32,18 @@ jobs:
         if: steps.cache-pipenv.outputs.cache-hit != 'true'
         run: |
           pipenv install --deploy --dev
-      - name: Test with pytest
+      - name: Test with pytest under coverage
         run: |
-          pipenv run pytest -v
+          pipenv run coverage run -m pytest -v
+      # store data to create coverage comment
+      - name: Coverage comment
+        id: coverage_comment
+        uses: py-cov-action/python-coverage-comment-action@v3
+        with:
+          GITHUB_TOKEN: ${{ github.token }}
+      - name: Store Pull Request comment to be posted
+        uses: actions/upload-artifact@v3
+        if: steps.coverage_comment.outputs.COMMENT_FILE_WRITTEN == 'true'
+        with:
+          name: python-coverage-comment-action
+          path: python-coverage-comment-action.txt
