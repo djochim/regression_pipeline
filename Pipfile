@@ -9,6 +9,7 @@ uvicorn = "*"
 requests = "*"
 starlette = "*"
 coverage = "*"
+prospector = "*"
 
 [dev-packages]
 pytest = "*"
