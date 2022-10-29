@@ -12,5 +12,5 @@ def get_tasks():
 def create_task(task: Task):
     tasks.append(task)
 
-def get_task(id: uuid.UUID):
-    return [task for task in tasks if task.id == id][0]
+def get_task(uid: uuid.UUID):
+    return [task for task in tasks if task.id == uid][0]

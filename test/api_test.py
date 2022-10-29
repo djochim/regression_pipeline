@@ -17,7 +17,7 @@ def test_post_tasks():
     json_body = response.json()
     assert json_body['name'] == "Finish presentation"
     assert json_body['id'] is not None
-    assert json_body['isFinished'] is False
+    assert json_body['is_finished'] is False
     created_task_id = json_body['id']
     
     response = client.get("/tasks")
@@ -25,7 +25,7 @@ def test_post_tasks():
     json_body = response.json()[0]
     assert json_body['name'] == "Finish presentation"
     assert json_body['id'] == created_task_id
-    assert json_body['isFinished'] is False
+    assert json_body['is_finished'] is False
 
 def test_delete_tasks():
     response = client.delete("/tasks")
