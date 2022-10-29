@@ -1,7 +1,7 @@
 # Get dependapot PRs to update libraties frequently
 version: 2
 updates:
-  - package-ecosystem: "pipenv"
+  - package-ecosystem: "pip"
     directory: "/" # Location of package manifests
     schedule:
       interval: "weekly"
