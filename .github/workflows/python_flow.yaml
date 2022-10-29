@@ -77,7 +77,7 @@ jobs:
       - name: Run static code scan
         run: |
           pipenv run prospector
-  security-scan:
-    uses: jpetrucciani/bandit-check@master
-    with:
-      path: '.'
+      - name: security-scan
+        uses: jpetrucciani/bandit-check@master
+        with:
+          path: '.'
