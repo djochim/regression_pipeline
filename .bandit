@@ -1,2 +1,2 @@
 [bandit]
-exclude_dirs = ["test"]
+exclude = tests
